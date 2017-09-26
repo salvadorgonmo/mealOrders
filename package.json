@@ -4,8 +4,9 @@
   "description": "proeycto inicial",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "test": "standard",
+    "start": "node index.js",
+    "autolint": "standard --fix"
   },
   "author": "unosquare - fmi",
   "license": "ISC",
@@ -13,5 +14,8 @@
     "body-parser": "^1.18.2",
     "express": "^4.15.4",
     "mongoose": "^4.11.12"
+  },
+  "devDependencies": {
+    "standard": "^10.0.3"
   }
 }
