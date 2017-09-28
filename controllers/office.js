@@ -1,5 +1,5 @@
 const OfficeModel = require('../models/office')
-
+// module for get all data from the office data
 module.exports.get = function get (req, res) {
   OfficeModel.find({}).exec(function (err, offices) {
     if (err) return res.status(500).send()
@@ -7,6 +7,7 @@ module.exports.get = function get (req, res) {
   })
 }
 
+// module for get only one data from the office data through the id
 module.exports.get1 = function get (req, res) {
   OfficeModel.findOne({ _id: req.params.id }, req.body)
   .exec(function (err, data) {
@@ -14,8 +15,8 @@ module.exports.get1 = function get (req, res) {
     res.json({data})
   })
 }
-  
 
+// module for create a new data to the office data
 module.exports.post = function post (req, res) {
   const newOffice = new OfficeModel(req.body)
   newOffice.save(function (err, list) {
@@ -26,6 +27,7 @@ module.exports.post = function post (req, res) {
   })
 }
 
+// module for update a data from the office data through the id
 module.exports.put = function put (req, res) {
   OfficeModel.findOneAndUpdate({ _id: req.params.id }, req.body)
     .exec(function (err, data) {
@@ -34,10 +36,10 @@ module.exports.put = function put (req, res) {
     })
 }
 
-
+// module for delete a data from the office data through the id
 module.exports.delete = function del (req, res) {
-  OfficeModel.findOneAndRemove({ _id: req.params.id} ,req.body)
-  .exec(function (err, data){
+  OfficeModel.findOneAndRemove({ _id: req.params.id }, req.body)
+  .exec(function (err, data) {
     if (err) return res.status(404).send(err)
     res.send()
   })
