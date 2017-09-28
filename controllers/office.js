@@ -7,7 +7,7 @@ module.exports.get = function get (req, res) {
   })
 }
 
-module.exports.get1 = function get (req, res) {
+module.exports.getOne = function getOne (req, res) {
   OfficeModel.findOne({ _id: req.params.id }, req.body)
   .exec(function (err, value) {
     if (err) return res.status(500).send()

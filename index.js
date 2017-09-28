@@ -5,7 +5,9 @@ const port = 3030
 const mongoose = require('mongoose')
 const promise = require('bluebird')
 mongoose.Promise = promise
-mongoose.connect('mongodb://localhost/foodControl')
+mongoose.connect('mongodb://localhost/foodControl', {
+  useMongoClient: true,
+});
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
