@@ -16,6 +16,10 @@ const lists = mongoose.Schema({
   drinks: {
     type: String,
     required: true
+  },
+  isActive: {
+    type: Boolean,
+    default: true
   }
 })
 

@@ -8,6 +8,10 @@ const offices = mongoose.Schema({
   address: {
     type: String,
     required: true
+  },
+  isActive: {
+    type: Boolean,
+    default: true
   }
 })
 

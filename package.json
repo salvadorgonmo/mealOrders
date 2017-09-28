@@ -11,6 +11,7 @@
   "author": "unosquare - fmi",
   "license": "ISC",
   "dependencies": {
+    "bluebird": "^3.5.0",
     "body-parser": "^1.18.2",
     "express": "^4.15.4",
     "mongoose": "^4.11.12"

@@ -1,9 +1,10 @@
 const express = require('express')
-let app = express()
+const app = express()
 const bodyParser = require('body-parser')
 const port = 3030
 const mongoose = require('mongoose')
-
+const promise = require('bluebird')
+mongoose.Promise = promise
 mongoose.connect('mongodb://localhost/foodControl')
 
 app.use(bodyParser.json())

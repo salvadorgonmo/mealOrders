@@ -5,9 +5,9 @@ const orders = mongoose.Schema({
     type: String,
     required: true
   },
-  cancelled: {
+  isActive: {
     type: Boolean,
-    default: false
+    default: true
   },
   user: {
     type: String,
