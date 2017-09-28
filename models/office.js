@@ -2,12 +2,12 @@ var mongoose = require('mongoose')
 
 const offices = mongoose.Schema({
   name: {
-    tyoe: String,
-    require: true
+    type: String,
+    required: true
   },
   address: {
     type: String,
-    require: true
+    required: true
   }
 })
 
