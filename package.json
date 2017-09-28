@@ -1,0 +1,22 @@
+{
+  "name": "base",
+  "version": "1.0.0",
+  "description": "proeycto inicial",
+  "main": "index.js",
+  "scripts": {
+    "test": "standard",
+    "start": "node index.js",
+    "autolint": "standard --fix"
+  },
+  "author": "unosquare - fmi",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "body-parser": "^1.18.2",
+    "express": "^4.15.4",
+    "mongoose": "^4.11.12"
+  },
+  "devDependencies": {
+    "standard": "^10.0.3"
+  }
+}
