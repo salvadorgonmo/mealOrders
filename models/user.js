@@ -1,5 +1,4 @@
-
-var mongoose = require('mongoose')
+const mongoose = require('mongoose')
 
 const users = mongoose.Schema({
   name: {
@@ -24,6 +23,10 @@ const users = mongoose.Schema({
     required: true
   },
   role: {
+    type: String,
+    required: true
+  },
+  slackUser: {
     type: String,
     required: true
   }

@@ -1,21 +1,21 @@
-var mongoose = require('mongoose')
+const mongoose = require('mongoose')
 
 const lists = mongoose.Schema({
   title: {
     type: String,
-    require: true
+    required: true
   },
   date: {
     type: String,
-    require: true
+    required: true
   },
   menu: {
     type: String,
-    require: true
+    required: true
   },
   drinks: {
     type: String,
-    require: true
+    required: true
   }
 })
 
