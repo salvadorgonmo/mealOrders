@@ -16,14 +16,13 @@ app.use(bodyParser.urlencoded({extended: true}))
 const routes = require('./routes')
 app.use(errorHandlers.productionErrors)
 app.use('/', routes)
-
-app.listen(port, function () {
-  console.log('app working on port:', port)
-})
-
 app.use(errorHandlers.notFound)
 app.use(errorHandlers.catchErrors)
 
 if (app.get('env') === 'development') {
   app.use(errorHandlers.developmentErrors)
 }
+
+app.listen(port, function () {
+  console.log('app working on port:', port)
+})
