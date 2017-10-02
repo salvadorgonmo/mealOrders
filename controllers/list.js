@@ -1,7 +1,7 @@
 const ListModel = require('../models/list')
 
 module.exports.getOne = async function (req, res) {
-  const data = await ListModel.findOne({ _id: req.params.id }, req.body)
+  const data = await ListModel.findOne({ _id: req.params.id })
   res.json({data})
 }
 
@@ -18,10 +18,10 @@ module.exports.post = async function post (req, res) {
 
 module.exports.put = async function put (req, res) {
   await ListModel.findOneAndUpdate({ _id: req.params.id }, req.body)
-  await res.send()
+  res.send()
 }
 
 module.exports.delete = async function del (req, res) {
   await ListModel.findOneAndUpdate({ _id: req.params.id }, {isActive: false})
-  await res.send()
+  res.send()
 }

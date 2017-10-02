@@ -4,7 +4,7 @@ const { catchErrors } = require('./utils/errorHandlers')
 const officeController = require('./controllers/office')
 const listController = require('./controllers/list')
 const orderController = require('./controllers/order')
-const userController =  require('./controllers/user')
+const userController = require('./controllers/user')
 
 Router.post('/office', catchErrors(officeController.post))
 Router.get('/office', catchErrors(officeController.get))

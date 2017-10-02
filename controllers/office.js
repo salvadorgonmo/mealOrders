@@ -6,7 +6,7 @@ module.exports.get = async function get (req, res) {
 }
 
 module.exports.getOne = async function getOne (req, res) {
-  const data = await OfficeModel.findOne({ _id: req.params.id }, req.body)
+  const data = await OfficeModel.findOne({ _id: req.params.id })
   res.json({data})
 }
 
@@ -18,10 +18,10 @@ module.exports.post = async function post (req, res) {
 
 module.exports.put = async function put (req, res) {
   await OfficeModel.findOneAndUpdate({ _id: req.params.id }, req.body)
-  await res.send()
+  res.send()
 }
 
 module.exports.delete = async function del (req, res) {
   await OfficeModel.findOneAndUpdate({ _id: req.params.id }, {isActive: false})
-  await res.send()
+  res.send()
 }
