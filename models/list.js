@@ -6,8 +6,8 @@ const lists = mongoose.Schema({
     required: true
   },
   date: {
-    type: String,
-    required: true
+    type: Date,
+    default: new Date()
   },
   menu: {
     type: String,
