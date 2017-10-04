@@ -5,6 +5,9 @@ const officeController = require('./controllers/office')
 const listController = require('./controllers/list')
 const orderController = require('./controllers/order')
 const userController = require('./controllers/user')
+const userSchema = require('./controllers/schemas/user')
+
+// Alernative routes
 
 Router.post('/office', catchErrors(officeController.post))
 Router.get('/office', catchErrors(officeController.get))
@@ -24,10 +27,10 @@ Router.put('/order/:id', catchErrors(orderController.put))
 Router.delete('/order/:id', catchErrors(orderController.delete))
 Router.get('/order/:id', catchErrors(orderController.getOne))
 
-Router.post('/user', catchErrors(userController.post))
+Router.post('/user', userSchema.post, catchErrors(userController.post))
 Router.get('/user', catchErrors(userController.get))
-Router.put('/user/:id', catchErrors(userController.put))
+Router.put('/user/:id', userSchema.put, catchErrors(userController.put))
 Router.delete('/user/:id', catchErrors(userController.delete))
-Router.get('/user/:id', catchErrors(userController.getOne))
+Router.get('/user/:id', userSchema.getOne, catchErrors(userController.getOne))
 
 module.exports = Router
