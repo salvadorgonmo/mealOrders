@@ -10,6 +10,6 @@ module.exports.param = function (req, res, next, schema) {
 
 function validateErrors (req, res, next) {
   const errors = req.validationErrors()
-  if (errors) return res.status(500).send(errors)
+  if (errors) return res.status(400).send(errors)
   next()
 }

@@ -10,8 +10,9 @@ const orders = mongoose.Schema({
     default: true
   },
   user: {
-    type: String,
-    required: true
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: 'User'
   },
   date: {
     type: Date,

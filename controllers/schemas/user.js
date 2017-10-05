@@ -35,7 +35,7 @@ const post = {
   role: {
     notEmpty: true,
     isAlpha: true,
-    errorMessage: 'You need to fullfill the field with your role'
+    errorMessage: 'You need to enter the field with your role'
   },
   slackUser: {
     notEmpty: true,
@@ -88,7 +88,7 @@ const put = {
       options: { checkFalsy: true }
     },
     isAlpha: true,
-    errorMessage: 'You need to fullfill the field with your role, and only letters'
+    errorMessage: 'You need to enter the field with your role, and only letters'
   },
   slackUser: {
     optional: {
