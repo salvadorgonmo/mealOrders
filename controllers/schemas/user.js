@@ -64,7 +64,7 @@ const put = {
   },
   office: {
     optional: {
-      options: { checkFalsy: true}
+      options: { checkFalsy: true }
     },
     errorMessage: 'The field should containt the new office name only by letters'
   },
@@ -91,7 +91,7 @@ const put = {
   },
   role: {
     optional: {
-      options: { checkFalsy:true }
+      options: { checkFalsy: true }
     },
     isAlpha: true,
     errorMessage: 'You need to fullfill the field with your role, and only letters'

@@ -8,8 +8,8 @@ module.exports.param = function (req, res, next, schema) {
   validateErrors(req, res, next)
 }
 
-function validateErrors(req, res, next) {
+function validateErrors (req, res, next) {
   const errors = req.validationErrors()
-  if(errors) return res.status(500).send(errors)
+  if (errors) return res.status(500).send(errors)
   next()
 }
