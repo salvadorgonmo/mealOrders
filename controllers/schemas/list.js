@@ -1,12 +1,5 @@
 const validator = require('../../utils/schemaValidator')
-
-const getOne = {
-  id: {
-    isMongoId: true,
-    notEmpty: true,
-    errorMessage: 'This is not a correct MongoID'
-  }
-}
+const searchId = require('../../controllers/schemas/base')
 
 const post = {
   title: {
@@ -69,7 +62,11 @@ const put = {
 }
 
 module.exports.getOne = function (req, res, next) {
-  validator.param(req, res, next, getOne)
+  validator.param(req, res, next, searchId.idSearch)
+}
+
+module.exports.delete = function (req, res, next) {
+  validator.param(req, res, next, searchId.idSearch)
 }
 
 module.exports.put = function (req, res, next) {

@@ -1,12 +1,12 @@
 const UserModel = require('../models/user')
 
 module.exports.get = async function get (req, res) {
-  const data = await UserModel.find({})
+  const data = await UserModel.find({}).populate('office')
   res.json({data})
 }
 
 module.exports.getOne = async function getOne (req, res) {
-  const data = await UserModel.findById(req.params.id)
+  const data = await UserModel.findById(req.params.id).populate('office')
   if (!data) return res.status(200).send('This id is not stored in the server')
   res.json({data})
 }
