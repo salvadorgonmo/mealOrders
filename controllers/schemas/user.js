@@ -1,9 +1,7 @@
 const validator = require('../../utils/schemaValidator')
-// const ObjectId = require('mongodb').ObjectID
 
 const getOne = {
   id: {
-   // isMongoId: true,
     isMongoId: true,
     notEmpty: true,
     errorMessage: 'This is not a correct MongoID'
@@ -12,7 +10,6 @@ const getOne = {
 
 const post = {
   name: {
-    isAlpha: true,
     notEmpty: true,
     errorMessage: 'The field should contain your name with only letters'
   },
@@ -41,7 +38,6 @@ const post = {
     errorMessage: 'You need to fullfill the field with your role'
   },
   slackUser: {
-    isEmail: true,
     notEmpty: true,
     errorMessage: 'You should type your slack user'
   },
@@ -51,7 +47,6 @@ const post = {
       errorMessage: 'Should be a boolean'
     }
   }
-
 }
 
 const put = {
@@ -59,7 +54,6 @@ const put = {
     optional: {
       options: { checkFalsy: true }
     },
-    isAlpha: true,
     errorMessage: 'The field should contain your new full name only with letters'
   },
   office: {
@@ -100,7 +94,6 @@ const put = {
     optional: {
       options: {checkFalsy: true}
     },
-    isEmail: true,
     errorMessage: 'You should type your slack user in the correct format'
   },
   isActive: {

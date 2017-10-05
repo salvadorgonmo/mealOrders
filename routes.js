@@ -6,6 +6,7 @@ const listController = require('./controllers/list')
 const orderController = require('./controllers/order')
 const userController = require('./controllers/user')
 const userSchema = require('./controllers/schemas/user')
+const listSchema = require('./controllers/schemas/list')
 
 // Alernative routes
 
@@ -15,11 +16,11 @@ Router.put('/office/:id', catchErrors(officeController.put))
 Router.delete('/office/:id', catchErrors(officeController.delete))
 Router.get('/office/:id', catchErrors(officeController.getOne))
 
-Router.post('/list', catchErrors(listController.post))
+Router.post('/list', listSchema.post, catchErrors(listController.post))
 Router.get('/list', catchErrors(listController.get))
-Router.put('/list/:id', catchErrors(listController.put))
+Router.put('/list/:id', listSchema.put, catchErrors(listController.put))
 Router.delete('/list/:id', catchErrors(listController.delete))
-Router.get('/list/:id', catchErrors(listController.getOne))
+Router.get('/list/:id', listSchema.getOne, catchErrors(listController.getOne))
 
 Router.post('/order', catchErrors(orderController.post))
 Router.get('/order', catchErrors(orderController.get))
