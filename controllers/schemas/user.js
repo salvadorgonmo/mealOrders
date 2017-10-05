@@ -12,16 +12,18 @@ const getOne = {
 
 const post = {
   name: {
+    isAlpha: true,
     notEmpty: true,
-    errorMessage: 'The field should contain your name'
+    errorMessage: 'The field should contain your name with only letters'
   },
   office: {
     notEmpty: true,
-    errorMessage: 'The field should containt the office name'
+    errorMessage: 'The field should contain the office name'
   },
   password: {
+    isAlphanumeric: true,
     notEmpty: true,
-    errorMessage: 'Invalid password'
+    errorMessage: 'Invalid password format, please use only letters and numbers'
   },
   email: {
     notEmpty: true,
@@ -30,18 +32,21 @@ const post = {
   },
   phone: {
     notEmpty: true,
-    isNumber: false,
+    isNumeric: true,
     errorMessage: 'The phone is in the incorrect format'
   },
   role: {
     notEmpty: true,
+    isAlpha: true,
     errorMessage: 'You need to fullfill the field with your role'
   },
   slackUser: {
+    isEmail: true,
     notEmpty: true,
     errorMessage: 'You should type your slack user'
   },
   isActive: {
+    notEmpty: true,
     isBoolean: {
       errorMessage: 'Should be a boolean'
     }
@@ -51,39 +56,59 @@ const post = {
 
 const put = {
   name: {
-    notEmpty: true,
-    errorMessage: 'The field should contain your new name'
+    optional: {
+      options: { checkFalsy: true }
+    },
+    isAlpha: true,
+    errorMessage: 'The field should contain your new full name only with letters'
   },
   office: {
-    notEmpty: true,
-    errorMessage: 'The field should containt the new office name'
+    optional: {
+      options: { checkFalsy: true}
+    },
+    errorMessage: 'The field should containt the new office name only by letters'
   },
   password: {
-    notEmpty: true,
-    errorMessage: 'Invalid password'
+    optional: {
+      options: { checkFalsy: true }
+    },
+    isAlphanumeric: true,
+    errorMessage: 'You should type your password with only numbers and letters'
   },
   email: {
-    notEmpty: true,
+    optional: {
+      options: { checkFalsy: true }
+    },
     isEmail: true,
-    errorMessage: 'Invalid email'
+    errorMessage: 'Invalid email format'
   },
   phone: {
-    notEmpty: true,
-    isNumber: true,
+    optional: {
+      options: { checkFalsy: true }
+    },
+    isNumeric: true,
     errorMessage: 'The phone is in the incorrect format'
   },
   role: {
-    notEmpty: true,
-    errorMessage: 'You need to fullfill the field with your role'
+    optional: {
+      options: { checkFalsy:true }
+    },
+    isAlpha: true,
+    errorMessage: 'You need to fullfill the field with your role, and only letters'
   },
   slackUser: {
-    notEmpty: true,
-    errorMessage: 'You should type your slack user'
+    optional: {
+      options: {checkFalsy: true}
+    },
+    isEmail: true,
+    errorMessage: 'You should type your slack user in the correct format'
   },
   isActive: {
-    isBoolean: {
-      errorMessage: 'Should be a boolean'
-    }
+    optional: {
+      options: {checkFalsy: true}
+    },
+    isBoolean: true,
+    errorMessage: 'Only true and false values'
   }
 }
 
