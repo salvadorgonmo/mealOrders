@@ -1,10 +1,12 @@
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
+const expressValidator = require('express-validator')
 const port = 3030
 const mongoose = require('mongoose')
 const promise = require('bluebird')
 const errorHandlers = require('./utils/errorHandlers')
+
 mongoose.Promise = promise
 mongoose.connect('mongodb://localhost/foodControl', {
   useMongoClient: true
@@ -12,7 +14,7 @@ mongoose.connect('mongodb://localhost/foodControl', {
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
-
+app.use(expressValidator())
 const routes = require('./routes')
 app.use(errorHandlers.productionErrors)
 app.use('/', routes)

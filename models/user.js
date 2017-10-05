@@ -34,7 +34,6 @@ const users = mongoose.Schema({
     type: Boolean,
     default: true
   }
-
 })
 
 module.exports = mongoose.model('User', users)

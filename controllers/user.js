@@ -6,7 +6,8 @@ module.exports.get = async function get (req, res) {
 }
 
 module.exports.getOne = async function getOne (req, res) {
-  const data = await UserModel.findOne({ _id: req.params.id })
+  const data = await UserModel.findById(req.params.id)
+  if (!data) return res.status(200).send('This id is not stored in the server')
   res.json({data})
 }
 
