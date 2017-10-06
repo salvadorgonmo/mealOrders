@@ -1,5 +1,5 @@
 const validator = require('../../utils/schemaValidator')
-const searchId = require('../../controllers/schemas/base')
+const { paramId } = require('../../controllers/schemas/base')
 
 const post = {
   name: {
@@ -107,9 +107,9 @@ module.exports.put = function (req, res, next) {
 }
 
 module.exports.getOne = function (req, res, next) {
-  validator.param(req, res, next, searchId.idSearch)
+  validator.param(req, res, next, paramId('user id'))
 }
 
 module.exports.delete = function (req, res, next) {
-  validator.param(req, res, next, searchId.idSearch)
+  validator.param(req, res, next, paramId('user id'))
 }
