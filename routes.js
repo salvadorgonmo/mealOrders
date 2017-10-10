@@ -1,5 +1,8 @@
 const express = require('express')
 const Router = express.Router()
+const passport = require('passport')
+const LocalStrategy = require('passport-local').Strategy
+
 const { catchErrors } = require('./utils/errorHandlers')
 const officeController = require('./controllers/office')
 const listController = require('./controllers/list')
@@ -9,6 +12,7 @@ const userSchema = require('./controllers/schemas/user')
 const listSchema = require('./controllers/schemas/list')
 const officeSchema = require('./controllers/schemas/office')
 const orderSchema = require('./controllers/schemas/order')
+const loginController = require('./controllers/login')
 
 // Alernative routes
 
@@ -36,4 +40,10 @@ Router.put('/user/:id', userSchema.put, catchErrors(userController.put))
 Router.delete('/user/:id', userSchema.delete, catchErrors(userController.delete))
 Router.get('/user/:id', userSchema.getOne, catchErrors(userController.getOne))
 
+//Router.post('/login', (req, res) => passport.authenticate('local', { successRedirect: '/', failureRedirect: '/login', })(req, res))
+Router.post('/login', 
+  passport.authenticate('local', { failureRedirect: '/login' }),
+  function(req, res) {
+    res.redirect('/');
+  })
 module.exports = Router

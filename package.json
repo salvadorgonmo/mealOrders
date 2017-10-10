@@ -15,7 +15,9 @@
     "body-parser": "^1.18.2",
     "express": "^4.15.4",
     "express-validator": "^4.2.1",
-    "mongoose": "^4.11.12"
+    "mongoose": "^4.11.12",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {
     "standard": "^10.0.3"

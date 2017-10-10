@@ -6,6 +6,7 @@ const port = 3030
 const mongoose = require('mongoose')
 const promise = require('bluebird')
 const errorHandlers = require('./utils/errorHandlers')
+const passport = require('passport')
 
 mongoose.Promise = promise
 mongoose.connect('mongodb://localhost/foodControl', {
@@ -14,8 +15,10 @@ mongoose.connect('mongodb://localhost/foodControl', {
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
+app.use(passport.initialize())
 app.use(expressValidator())
 const routes = require('./routes')
+
 app.use(errorHandlers.productionErrors)
 app.use('/', routes)
 app.use(errorHandlers.notFound)

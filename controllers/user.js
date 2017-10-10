@@ -7,7 +7,7 @@ module.exports.get = async function get (req, res) {
 
 module.exports.getOne = async function getOne (req, res) {
   const data = await UserModel.findById(req.params.id).populate('office')
-  if (!data) return res.status(200).send('This id is not stored in the server')
+  if (!data) return res.status(200).send('This user is not stored in the server')
   res.json({data})
 }
 
@@ -26,3 +26,9 @@ module.exports.delete = async function del (req, res) {
   await UserModel.findOneAndUpdate({ _id: req.params.id }, {isActive: false})
   res.send()
 }
+ 
+
+
+
+
+
