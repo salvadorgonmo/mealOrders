@@ -13,6 +13,7 @@ const listSchema = require('./controllers/schemas/list')
 const officeSchema = require('./controllers/schemas/office')
 const orderSchema = require('./controllers/schemas/order')
 const loginController = require('./controllers/login')
+const tokenController = require('./middlewares/auth')
 
 // Alernative routes
 
@@ -41,9 +42,8 @@ Router.delete('/user/:id', userSchema.delete, catchErrors(userController.delete)
 Router.get('/user/:id', userSchema.getOne, catchErrors(userController.getOne))
 
 //Router.post('/login', (req, res) => passport.authenticate('local', { successRedirect: '/', failureRedirect: '/login', })(req, res))
-Router.post('/login', 
-  passport.authenticate('local', { failureRedirect: '/login' }),
-  function(req, res) {
-    res.redirect('/');
-  })
+Router.post('/login', loginController.login)
+Router.post('/logout', catchErrors(loginController.logout))
+
+Router.get('/token', tokenController.token)
 module.exports = Router

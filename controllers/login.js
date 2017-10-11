@@ -1,6 +1,37 @@
+const modelUser = require ('../models/user')
+const Guid = require ('guid')
+
+module.exports.login = async (req, res) => {
+  try{
+    const email = req.body.email
+    const password = req.body.password
+    const user = await modelUser.findOne({email: email})
+     if(user.email == email && user.password == password){
+      const token = Guid.create()
+      user.token = token
+      await user.save()
+      res.status(200).send(token)
+    }else{
+      throw new err()
+    }
+  }catch(err){
+    res.status(401).send('Your password or email are not correct')
+  }
+}
+
+module.exports.logout = async (req, res) => {
+  const del = await modelUser.findOneAndUpdate({ token: req.app.locals.token }, {token: null})
+  res.status(200).send('Logout done')
+}
+
+
+/*
+
 const UserModel = require('../models/user')
 const passport = require('passport')
 const Strategy = require('passport-local').Strategy
+*/
+
 
 /*
 module.exports.login = function access (req, res) {
@@ -31,7 +62,7 @@ module.exports.login = function access (req, res) {
 }
 */
 
-
+/*
 passport.use(new Strategy({
   usernameField: 'email',
   passwordField: 'password',
@@ -46,7 +77,7 @@ passport.use(new Strategy({
     })
   }))
 
-
+/*
 
 /*
 module.exports.login = function (req, res) {
@@ -71,3 +102,4 @@ module.exports.login = function (req, res) {
 }
 
 */
+
