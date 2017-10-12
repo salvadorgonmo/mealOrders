@@ -35,15 +35,15 @@ Router.put('/order/:id', orderSchema.put, catchErrors(orderController.put))
 Router.delete('/order/:id', orderSchema.delete, catchErrors(orderController.delete))
 Router.get('/order/:id', orderSchema.getOne, catchErrors(orderController.getOne))
 
-Router.post('/user', userSchema.post, catchErrors(userController.post))
+Router.post('/user',tokenController.authorize, userSchema.post, catchErrors(userController.post))
 Router.get('/user', catchErrors(userController.get))
 Router.put('/user/:id', userSchema.put, catchErrors(userController.put))
 Router.delete('/user/:id', userSchema.delete, catchErrors(userController.delete))
 Router.get('/user/:id', userSchema.getOne, catchErrors(userController.getOne))
 
 //Router.post('/login', (req, res) => passport.authenticate('local', { successRedirect: '/', failureRedirect: '/login', })(req, res))
-Router.post('/login', loginController.login)
-Router.post('/logout', catchErrors(loginController.logout))
+//Router.post('/login', loginController.login)
+//Router.post('/logout', catchErrors(loginController.logout))
 
-Router.get('/token', tokenController.token)
+//Router.get('/token', )
 module.exports = Router

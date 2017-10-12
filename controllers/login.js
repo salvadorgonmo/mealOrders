@@ -1,15 +1,18 @@
 const modelUser = require ('../models/user')
-const Guid = require ('guid')
+//const Guid = require ('guid')
 
 module.exports.login = async (req, res) => {
   try{
     const email = req.body.email
     const password = req.body.password
     const user = await modelUser.findOne({email: email})
-     if(user.email == email && user.password == password){
-      const token = Guid.create()
+    if(user.email == email && user.password == password){
+      const token = req.get('Authorization')
       user.token = token
       await user.save()
+      req.app.locals.token = token
+      //req.headers.authorization = token.toString()
+      console.log(req.headers.authorization)
       res.status(200).send(token)
     }else{
       throw new err()
@@ -22,6 +25,8 @@ module.exports.login = async (req, res) => {
 module.exports.logout = async (req, res) => {
   const del = await modelUser.findOneAndUpdate({ token: req.app.locals.token }, {token: null})
   res.status(200).send('Logout done')
+  console.log(req.headers.authorization)
+  console.log(req.get('Authorization'))
 }
 
 
