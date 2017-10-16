@@ -8,7 +8,6 @@ const promise = require('bluebird')
 const errorHandlers = require('./utils/errorHandlers')
 const passport = require('passport')
 
-
 mongoose.Promise = promise
 mongoose.connect('mongodb://localhost/foodControl', {
   useMongoClient: true
@@ -19,13 +18,11 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use(passport.initialize())
 app.use(expressValidator())
 const routes = require('./routes')
-//const auth = require('./middlewares/auth')
 const loginRoute = require('./middlewares/loginRoutes')
 
 app.use(errorHandlers.productionErrors)
 
 app.use('/', loginRoute)
-//app.use('/', auth)
 app.use('/', routes)
 
 app.use(errorHandlers.notFound)

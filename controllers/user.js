@@ -26,9 +26,3 @@ module.exports.delete = async function del (req, res) {
   await UserModel.findOneAndUpdate({ _id: req.params.id }, {isActive: false})
   res.send()
 }
- 
-
-
-
-
-

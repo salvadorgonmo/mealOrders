@@ -1,25 +1,15 @@
-const modelUser = require ('../models/user')
-const express = require('express')
-const Router = express.Router()
+const modelUser = require('../models/user')
 
-module.exports.authorize = async function (req, res, next)  {
-  console.log('what')
-  try{
-    const tokenUno = req.get('Authorization')
-    const exist = await modelUser.findOne({ token: tokenUno })
-    //console.log(tokenUno)
-    if(exist){
-      req.app.locals.email = email
-      req.app.locals.password = password
+module.exports.auth = async (req, res, next) => {
+  try {
+    const tokenUno = req.app.locals.token
+    const Exist = await modelUser.findOne({ token: tokenUno })
+    if (Exist.token != null) {
       next()
-    }else{
-      throw new err()
+    } else {
+      throw new Error()
     }
-  }catch(err){
-    res.status(401).send()
+  } catch (err) {
+    res.status(401).send('You must need to log in first')
   }
 }
-
-//Router.post('/login', authorize)
-
-//module.exports = Router
