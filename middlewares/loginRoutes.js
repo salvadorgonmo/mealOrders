@@ -6,3 +6,4 @@ Router.post('/login', loginController.login)
 Router.post('/logout', loginController.logout)
 
 module.exports = Router
+

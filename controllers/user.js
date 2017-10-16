@@ -2,7 +2,8 @@ const UserModel = require('../models/user')
 
 module.exports.get = async function get (req, res) {
   const data = await UserModel.find({}).populate('office')
-  res.json({data})
+  if(res.locals.role === 'admin') res.json({data})
+  else res.status(401).send('You do not have enough privileges for see this')
 }
 
 module.exports.getOne = async function getOne (req, res) {
@@ -19,10 +20,10 @@ module.exports.post = async function post (req, res) {
 
 module.exports.put = async function put (req, res) {
   await UserModel.findOneAndUpdate({ _id: req.params.id }, req.body)
-  res.send()
+  res.send('User modified: '+res.locals.name)
 }
 
 module.exports.delete = async function del (req, res) {
   await UserModel.findOneAndUpdate({ _id: req.params.id }, {isActive: false})
-  res.send()
+  res.send('User deleted: '+res.locals.name)
 }

@@ -1,4 +1,5 @@
 const ModelUser = require('../models/user')
+const Guid = require('guid')
 
 module.exports.login = async (req, res) => {
   try {
@@ -6,12 +7,10 @@ module.exports.login = async (req, res) => {
     const password = req.body.password
     const User = await ModelUser.findOne({email: email})
     if (User.email === email && User.password === password) {
-      const token = req.get('Authorization')
+      const token = await Guid.create()
       User.token = token
       await User.save()
-      req.app.locals.token = token
-      req.headers.authorization = token.toString()
-      res.status(200).send(token)
+      res.json({Authorization: token})
     } else {
       throw new Error()
     }
@@ -21,6 +20,7 @@ module.exports.login = async (req, res) => {
 }
 
 module.exports.logout = async (req, res) => {
-  await ModelUser.findOneAndUpdate({ token: req.app.locals.token }, {token: null})
+  const tokenUser = req.get('Authorization')
+  await ModelUser.findOneAndUpdate({ token: tokenUser}, {token: null})
   res.status(200).send('Logout successful')
 }
