@@ -13,7 +13,7 @@ const orderSchema = require('./controllers/schemas/order')
 const authorization = require('./middlewares/auth')
 const userFaker = require('./faker/fakerUser')
 
-Router.post('/office',  officeSchema.post, catchErrors(officeController.post))
+Router.post('/office', officeSchema.post, catchErrors(officeController.post))
 Router.get('/office', catchErrors(officeController.get))
 Router.put('/office/:id', authorization.auth, officeSchema.put, catchErrors(officeController.put))
 Router.delete('/office/:id', authorization.auth, officeSchema.delete, catchErrors(officeController.delete))

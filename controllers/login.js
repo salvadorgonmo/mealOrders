@@ -21,6 +21,6 @@ module.exports.login = async (req, res) => {
 
 module.exports.logout = async (req, res) => {
   const tokenUser = req.get('Authorization')
-  await ModelUser.findOneAndUpdate({ token: tokenUser}, {token: null})
+  await ModelUser.findOneAndUpdate({token: tokenUser}, {token: null})
   res.status(200).send('Logout successful')
 }
