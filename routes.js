@@ -11,9 +11,10 @@ const listSchema = require('./controllers/schemas/list')
 const officeSchema = require('./controllers/schemas/office')
 const orderSchema = require('./controllers/schemas/order')
 const authorization = require('./middlewares/auth')
+const userFaker = require('./faker/fakerUser')
 
-Router.post('/office', authorization.auth, officeSchema.post, catchErrors(officeController.post))
-Router.get('/office', authorization.auth, catchErrors(officeController.get))
+Router.post('/office',  officeSchema.post, catchErrors(officeController.post))
+Router.get('/office', catchErrors(officeController.get))
 Router.put('/office/:id', authorization.auth, officeSchema.put, catchErrors(officeController.put))
 Router.delete('/office/:id', authorization.auth, officeSchema.delete, catchErrors(officeController.delete))
 Router.get('/office/:id', authorization.auth, officeSchema.getOne, catchErrors(officeController.getOne))
@@ -30,10 +31,11 @@ Router.put('/order/:id', authorization.auth, orderSchema.put, catchErrors(orderC
 Router.delete('/order/:id', authorization.auth, orderSchema.delete, catchErrors(orderController.delete))
 Router.get('/order/:id', authorization.auth, orderSchema.getOne, catchErrors(orderController.getOne))
 
-Router.post('/user', authorization.auth, userSchema.post, catchErrors(userController.post))
-Router.get('/user', authorization.auth, catchErrors(userController.get))
+Router.post('/user', userSchema.post, catchErrors(userController.post))
+Router.get('/user', catchErrors(userController.get))
 Router.put('/user/:id', authorization.auth, userSchema.put, catchErrors(userController.put))
 Router.delete('/user/:id', authorization.auth, userSchema.delete, catchErrors(userController.delete))
 Router.get('/user/:id', authorization.auth, userSchema.getOne, catchErrors(userController.getOne))
 
+Router.post('/faker', catchErrors(userFaker.insertUserData))
 module.exports = Router

@@ -2,8 +2,9 @@ const UserModel = require('../models/user')
 
 module.exports.get = async function get (req, res) {
   const data = await UserModel.find({}).populate('office')
-  if(res.locals.role === 'admin') res.json({data})
-  else res.status(401).send('You do not have enough privileges for see this')
+  res.json({data})
+  //if(res.locals.role === 'admin') res.json({data})
+ // else res.status(401).send('You do not have enough privileges for see this')
 }
 
 module.exports.getOne = async function getOne (req, res) {
