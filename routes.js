@@ -11,7 +11,7 @@ const listSchema = require('./controllers/schemas/list')
 const officeSchema = require('./controllers/schemas/office')
 const orderSchema = require('./controllers/schemas/order')
 const authorization = require('./middlewares/auth')
-const userFaker = require('./faker/fakerUser')
+const allSeeds = require('./seeds/allSeeds')
 
 Router.post('/office', officeSchema.post, catchErrors(officeController.post))
 Router.get('/office', catchErrors(officeController.get))
@@ -19,14 +19,14 @@ Router.put('/office/:id', authorization.auth, officeSchema.put, catchErrors(offi
 Router.delete('/office/:id', authorization.auth, officeSchema.delete, catchErrors(officeController.delete))
 Router.get('/office/:id', authorization.auth, officeSchema.getOne, catchErrors(officeController.getOne))
 
-Router.post('/list', authorization.auth, listSchema.post, catchErrors(listController.post))
-Router.get('/list', authorization.auth, catchErrors(listController.get))
+Router.post('/list', listSchema.post, catchErrors(listController.post))
+Router.get('/list', catchErrors(listController.get))
 Router.put('/list/:id', authorization.auth, listSchema.put, catchErrors(listController.put))
 Router.delete('/list/:id', authorization.auth, listSchema.delete, catchErrors(listController.delete))
 Router.get('/list/:id', authorization.auth, listSchema.getOne, catchErrors(listController.getOne))
 
-Router.post('/order', authorization.auth, orderSchema.post, catchErrors(orderController.post))
-Router.get('/order', authorization.auth, catchErrors(orderController.get))
+Router.post('/order', orderSchema.post, catchErrors(orderController.post))
+Router.get('/order', catchErrors(orderController.get))
 Router.put('/order/:id', authorization.auth, orderSchema.put, catchErrors(orderController.put))
 Router.delete('/order/:id', authorization.auth, orderSchema.delete, catchErrors(orderController.delete))
 Router.get('/order/:id', authorization.auth, orderSchema.getOne, catchErrors(orderController.getOne))
@@ -37,5 +37,8 @@ Router.put('/user/:id', authorization.auth, userSchema.put, catchErrors(userCont
 Router.delete('/user/:id', authorization.auth, userSchema.delete, catchErrors(userController.delete))
 Router.get('/user/:id', authorization.auth, userSchema.getOne, catchErrors(userController.getOne))
 
-Router.post('/faker', catchErrors(userFaker.insertUserData))
+Router.post('/faker/user', catchErrors(allSeeds.insertUserData))
+Router.post('/faker/order', catchErrors(allSeeds.insertOrderData))
+Router.post('/faker/office', catchErrors(allSeeds.insertOfficeData))
+Router.post('/faker/list', catchErrors(allSeeds.insertListData))
 module.exports = Router
