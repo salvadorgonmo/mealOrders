@@ -2,13 +2,11 @@ const UserModel = require('../models/user')
 
 module.exports.get = async function get (req, res) {
   const data = await UserModel.find({}).populate('office')
-  if (res.locals.role === 'admin')
-  {
+  if (res.locals.role === 'admin') {
     res.json({data})
-  } 
-  else{
+  } else {
     res.status(401).send()
-  } 
+  }
 }
 
 module.exports.getOne = async function getOne (req, res) {

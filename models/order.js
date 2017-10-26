@@ -28,5 +28,4 @@ const orders = mongoose.Schema({
   }
 })
 
-
 module.exports.table = mongoose.model('Order', orders)

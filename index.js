@@ -14,8 +14,7 @@ mongoose.connect('mongodb://localhost/foodControl', {
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
-//app.use(passport.initialize())
-//app.use(expressValidator())
+app.use(expressValidator())
 
 const userRoutes = require('./routes/userRoutes')
 const menuListRoutes = require('./routes/menuListRoutes')
