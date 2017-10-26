@@ -1,10 +1,9 @@
 const ModelUser = require('../models/user')
 const Guid = require('guid')
 
-module.exports.login = async (req, res) => {
+module.exports.login = async function login (req, res) {
   try {
-    const email = req.body.email
-    const password = req.body.password
+    const { email, password } = req.body
     const User = await ModelUser.findOne({email: email})
     if (User.email === email && User.password === password) {
       const token = await Guid.create()
@@ -12,7 +11,7 @@ module.exports.login = async (req, res) => {
       await User.save()
       res.json({Authorization: token})
     } else {
-      throw new Error()
+      throw new Error('Please enter a valid credentials')
     }
   } catch (err) {
     res.status(401).send('Your password or email are not correct: ')

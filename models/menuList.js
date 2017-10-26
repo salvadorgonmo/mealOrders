@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const lists = mongoose.Schema({
+const menuLists = mongoose.Schema({
   title: {
     type: String,
     required: true
@@ -23,4 +23,4 @@ const lists = mongoose.Schema({
   }
 })
 
-module.exports = mongoose.model('List', lists)
+module.exports = mongoose.model('MenuList', menuLists)

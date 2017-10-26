@@ -1,6 +1,6 @@
 const OrderModel = require('../models/order')
 const UserModel = require('../models/user')
-const ListModel = require('../models/list')
+const MenuListModel = require('../models/menuList')
 const OfficeModel = require('../models/office')
 const Faker = require('faker')
 const idUser = '59e677f04c704a2ea875d141'
@@ -52,10 +52,10 @@ module.exports.insertOfficeData = async (req, res) => {
   res.send('Data stored')
 }
 
-module.exports.insertListData = async (req, res) => {
+module.exports.insertMenuListData = async (req, res) => {
   let NewDataList
   for (var i = 0; i < totalInserts; i++) {
-    NewDataList = new ListModel()
+    NewDataList = new MenuListModel()
     NewDataList.title = Faker.commerce.productName()
     NewDataList.date = Faker.date.recent()
     NewDataList.menu = Faker.commerce.productName() + ': ' + Faker.commerce.productMaterial() + ' for: ' + Faker.commerce.product()

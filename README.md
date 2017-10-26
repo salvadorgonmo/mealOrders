@@ -1,1 +1,1 @@
-first version for meal ordering at unosquarejp Allius!
+first version for meal ordering at unosquare Allius!
