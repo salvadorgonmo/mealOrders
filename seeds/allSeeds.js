@@ -9,7 +9,7 @@ let totalInserts = 1000
 
 module.exports.insertOrderData = async (req, res) => {
   let NewDataOrder
-  for (var i = 0; i < totalInserts; i++) {
+  for (let i = 0; i < totalInserts; i++) {
     NewDataOrder = new OrderModel()
     NewDataOrder.description = Faker.commerce.productName()
     NewDataOrder.isActive = Faker.random.boolean()
@@ -24,7 +24,7 @@ module.exports.insertOrderData = async (req, res) => {
 
 module.exports.insertUserData = async (req, res) => {
   let NewDataUser
-  for (var i = 0; i < totalInserts; i++) {
+  for (let i = 0; i < totalInserts; i++) {
     NewDataUser = new UserModel()
     NewDataUser.name = Faker.name.findName()
     NewDataUser.office = idOffice
@@ -42,7 +42,7 @@ module.exports.insertUserData = async (req, res) => {
 
 module.exports.insertOfficeData = async (req, res) => {
   let NewDataOffice
-  for (var i = 0; i < totalInserts; i++) {
+  for (let i = 0; i < totalInserts; i++) {
     NewDataOffice = new OfficeModel()
     NewDataOffice.name = Faker.commerce.department()
     NewDataOffice.address = Faker.address.city() + ', ' + Faker.address.country()
@@ -54,7 +54,7 @@ module.exports.insertOfficeData = async (req, res) => {
 
 module.exports.insertMenuListData = async (req, res) => {
   let NewDataList
-  for (var i = 0; i < totalInserts; i++) {
+  for (let i = 0; i < totalInserts; i++) {
     NewDataList = new MenuListModel()
     NewDataList.title = Faker.commerce.productName()
     NewDataList.date = Faker.date.recent()

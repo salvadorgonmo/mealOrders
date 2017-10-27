@@ -4,11 +4,11 @@ const Guid = require('guid')
 module.exports.login = async function login (req, res) {
   try {
     const { email, password } = req.body
-    const User = await ModelUser.findOne({email: email})
-    if (User.email === email && User.password === password) {
+    const user = await ModelUser.findOne({ email })
+    if (user.email === email && user.password === password) {
       const token = await Guid.create()
-      User.token = token
-      await User.save()
+      user.token = token
+      await user.save()
       res.json({Authorization: token})
     } else {
       throw new Error('Please enter a valid credentials')
