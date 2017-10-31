@@ -1,12 +1,5 @@
 const validator = require('../../utils/schemaValidator')
-
-const getOne = {
-  id: {
-    isMongoId: true,
-    notEmpty: true,
-    errorMessage: 'This is not a correct MongoID'
-  }
-}
+const { paramId } = require('../../controllers/schemas/base')
 
 const post = {
   name: {
@@ -56,5 +49,9 @@ module.exports.put = function (req, res, next) {
 }
 
 module.exports.getOne = function (req, res, next) {
-  validator.param(req, res, next, getOne)
+  validator.param(req, res, next, paramId('office id'))
+}
+
+module.exports.delete = function (req, res, next) {
+  validator.param(req, res, next, paramId('office id'))
 }

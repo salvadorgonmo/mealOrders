@@ -33,6 +33,10 @@ const users = mongoose.Schema({
   isActive: {
     type: Boolean,
     default: true
+  },
+  token: {
+    type: String,
+    required: true
   }
 })
 

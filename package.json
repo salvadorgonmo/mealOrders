@@ -13,9 +13,16 @@
   "dependencies": {
     "bluebird": "^3.5.0",
     "body-parser": "^1.18.2",
+    "chai": "^4.1.2",
+    "cors": "^2.8.4",
     "express": "^4.15.4",
     "express-validator": "^4.2.1",
-    "mongoose": "^4.11.12"
+    "faker": "^4.1.0",
+    "guid": "0.0.12",
+    "mocha": "^4.0.1",
+    "mongoose": "^4.11.12",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {
     "standard": "^10.0.3"

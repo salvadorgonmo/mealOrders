@@ -1,12 +1,12 @@
 const OrderModel = require('../models/order')
 
 module.exports.get = async function get (req, res) {
-  const data = await OrderModel.find({})
+  const data = await OrderModel.find({}).populate('user')
   res.json({data})
 }
 
 module.exports.getOne = async function getOne (req, res) {
-  const data = await OrderModel.findOne({ _id: req.params.id })
+  const data = await OrderModel.findOne({ _id: req.params.id }).populate('user')
   res.json({data})
 }
 
