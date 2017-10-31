@@ -6,6 +6,7 @@ const port = 3030
 const mongoose = require('mongoose')
 const promise = require('bluebird')
 const errorHandlers = require('./utils/errorHandlers')
+const cors = require('cors')
 
 mongoose.Promise = promise
 mongoose.connect('mongodb://localhost/foodControl', {
@@ -15,6 +16,9 @@ mongoose.connect('mongodb://localhost/foodControl', {
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(expressValidator())
+app.use(cors({
+  origin: 'http://localhost:8080'
+}))
 
 const userRoutes = require('./routes/userRoutes')
 const menuListRoutes = require('./routes/menuListRoutes')

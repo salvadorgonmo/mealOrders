@@ -5,7 +5,7 @@ const officeController = require('../controllers/office')
 const officeSchema = require('../controllers/schemas/office')
 const authorization = require('../middlewares/auth')
 
-Router.post('/office', authorization.auth, officeSchema.post, catchErrors(officeController.post))
+Router.post('/office', officeSchema.post, catchErrors(officeController.post))
 Router.get('/office', authorization.auth, catchErrors(officeController.get))
 Router.put('/office/:id', authorization.auth, officeSchema.put, catchErrors(officeController.put))
 Router.delete('/office/:id', authorization.auth, officeSchema.delete, catchErrors(officeController.delete))
